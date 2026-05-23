@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@200;300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #020202;
+  --color-brand-dark: #19191a;
+  --color-brand-gray: #373739;
+  --color-brand-gold: #c9b977;
+  --color-brand-champagne: #ecdda2;
+
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-slow-pan: slow-pan 40s ease-in-out infinite alternate;
+  --animate-glow: glow-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes slow-pan {
+  from {
+    transform: scale(1.02) translate(0, 0);
+  }
+  to {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+}
+
+@keyframes glow-pulse {
+  from {
+    opacity: 0.15;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+body {
+  @apply bg-brand-black text-white font-sans antialiased;
+}
+
+html {
+  scroll-padding-top: 100px;
+  color-scheme: dark;
+  scroll-behavior: auto !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-gray rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-gold;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px #19191a inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* React Day Picker Custom Styling */
+.dark-day-picker {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: var(--color-brand-gold);
+  --rdp-background-color: var(--color-brand-dark);
+  color: white;
+}
+
+.dark-day-picker .rdp-day_selected,
+.dark-day-picker .rdp-day_selected:focus-visible,
+.dark-day-picker .rdp-day_selected:hover {
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-black);
+  font-weight: 500;
+}
+
+.dark-day-picker .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: rgba(201, 185, 119, 0.1);
+  color: var(--color-brand-champagne);
+}
+
+.dark-day-picker .rdp-head_cell {
+  color: #888;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.dark-day-picker .rdp-caption_label {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--color-brand-champagne);
+}
+
+.dark-day-picker .rdp-nav_button:hover {
+  background-color: rgba(201, 185, 119, 0.1);
+  color: var(--color-brand-champagne);
+}

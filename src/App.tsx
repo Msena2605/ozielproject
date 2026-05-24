@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 const About = lazy(() => import("./components/About"));
 const Experiences = lazy(() => import("./components/Experiences"));
@@ -74,6 +75,7 @@ export default function App() {
             <Footer />
           </Suspense>
         </div>
+        <FloatingWhatsApp />
       </main>
     </div>
   );

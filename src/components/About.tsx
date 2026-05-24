@@ -17,7 +17,7 @@ const Waveform = () => (
 export default function About() {
 
   return (
-    <section id="sobre" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-black relative">
+    <section id="sobre" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-black relative z-20">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-20 lg:gap-32 items-center">
           

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { cinematicEase } from "../lib/easings";
 import { MessageCircle, Mail, Calendar as CalendarIcon, ChevronDown, Check } from "lucide-react";
@@ -20,6 +20,15 @@ export default function Contact() {
   const [date, setDate] = useState<Date | undefined>();
   const [duration, setDuration] = useState("");
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const durationInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (durationInputRef.current) {
+      durationInputRef.current.setCustomValidity("");
+    }
+  }, [duration]);
+
+  const validationMessage = "Por favor, preencha este campo.";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,12 +45,20 @@ Detalhes: ${formData.message || "Não informado"}`;
     window.open(`https://wa.me/558299488812?text=${encodedText}`, '_blank');
   };
 
+  const handleInvalid = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.currentTarget.setCustomValidity(validationMessage);
+  };
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.currentTarget.setCustomValidity("");
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contato" className="py-24 md:py-32 bg-brand-black relative">
+    <section id="contato" className="py-24 md:py-32 bg-brand-black relative z-20">
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
           
@@ -130,6 +147,8 @@ Detalhes: ${formData.message || "Não informado"}`;
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    onInvalid={handleInvalid}
+                    onInput={handleInput}
                     className="w-full h-10 bg-transparent border-b border-brand-gray/50 text-white focus:outline-none focus:border-brand-gold transition-colors duration-500 font-light text-base"
                   />
                   <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-700 ease-out group-focus-within:w-full"></span>
@@ -148,6 +167,8 @@ Detalhes: ${formData.message || "Não informado"}`;
                       placeholder="Ex: Casamento..."
                       value={formData.event}
                       onChange={handleChange}
+                      onInvalid={handleInvalid}
+                      onInput={handleInput}
                       className="w-full h-10 bg-transparent border-b border-brand-gray/50 text-white focus:outline-none focus:border-brand-gold transition-colors duration-500 font-light text-sm md:text-base placeholder:text-white/20"
                     />
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-700 ease-out group-focus-within:w-full"></span>
@@ -194,6 +215,8 @@ Detalhes: ${formData.message || "Não informado"}`;
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
+                      onInvalid={handleInvalid}
+                      onInput={handleInput}
                       className="w-full h-10 bg-transparent border-b border-brand-gray/50 text-white focus:outline-none focus:border-brand-gold transition-colors duration-500 font-light text-sm md:text-base"
                     />
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-700 ease-out group-focus-within:w-full"></span>
@@ -211,6 +234,17 @@ Detalhes: ${formData.message || "Não informado"}`;
                         </Select.Icon>
                         <div className="absolute bottom-[-1px] left-0 w-0 h-[1px] bg-brand-gold transition-all duration-700 ease-out group-data-[state=open]/sel:w-full group-focus-within:w-full"></div>
                       </Select.Trigger>
+                      <input
+                        type="text"
+                        name="duration"
+                        value={duration}
+                        ref={durationInputRef}
+                        required
+                        readOnly
+                        className="sr-only"
+                        onInvalid={handleInvalid}
+                        onInput={handleInput}
+                      />
                       <Select.Portal>
                         <Select.Content 
                           position="popper" 

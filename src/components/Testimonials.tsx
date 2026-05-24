@@ -26,7 +26,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="depoimentos" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-dark relative overflow-hidden">
+    <section id="depoimentos" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-black relative z-20 overflow-hidden">
       {/* Cinematic subtle spotlight */}
       <div className="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[70vw] h-[50vw] bg-brand-gold/5 rounded-[100%] blur-[120px] pointer-events-none mix-blend-screen opacity-50"></div>
       

@@ -1,46 +1,32 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { cinematicEase } from "../lib/easings";
 
 export default function Hero() {
-  const [isVideoReady, setIsVideoReady] = useState(false);
-
   return (
-    <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-end pb-28 md:pb-36 overflow-hidden bg-brand-black isolate">
-      {/* High-quality poster as background */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover object-cover bg-brand-black bg-[center_38%] md:bg-center transition-opacity duration-[1.5s] ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ backgroundImage: "url('/Oziel-Melo.png')", opacity: isVideoReady ? 0 : 1 }}
-      />
-      
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isVideoReady ? 1 : 0 }}
-        transition={{ duration: 0.7, ease: cinematicEase }}
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-      >
+    <section className="relative isolate h-screen min-h-[600px] overflow-hidden bg-black pt-24 md:pt-28">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <video
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onLoadedData={() => setIsVideoReady(true)}
-          onCanPlay={() => setIsVideoReady(true)}
           aria-hidden="true"
           tabIndex={-1}
-          className="h-full w-full object-cover object-[center_38%] md:object-center opacity-100 contrast-[1.06] saturate-[0.95] brightness-[0.94]"
+          className="h-full w-full object-cover object-[center_38%] md:object-center"
         >
           <source src="/Video-oziel2~2.mp4" type="video/mp4" />
         </video>
-      </motion.div>
+      </div>
 
-      <div className="absolute inset-0 z-[1] bg-black/20 pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-32 z-[1] bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-[38vh] z-[1] bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent pointer-events-none" />
+      <div className="fixed inset-0 z-[1] pointer-events-none">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[40vh] bg-gradient-to-t from-black/95 via-black/35 to-transparent" />
+      </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center justify-end h-full pb-20 md:pb-24">
         <motion.p
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -56,7 +42,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.3, delay: 0.3, ease: cinematicEase }}
-          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white leading-[1.1] mb-9 sm:mb-11 font-light max-w-4xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]"
+          className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[3.8rem] text-white leading-[1.05] sm:leading-[1.05] mb-8 sm:mb-10 font-light max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]"
         >
           A trilha sonora perfeita para{" "}
           <span className="italic text-brand-champagne">
@@ -69,9 +55,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.65, ease: cinematicEase }}
-          className="flex items-center justify-center w-full"
+          className="flex items-center justify-center w-full mt-8 sm:mt-10"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-9 w-full">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-9 w-full max-w-2xl mx-auto">
             <a
               href="#contato"
               aria-label="Solicitar Orçamento"

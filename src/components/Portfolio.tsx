@@ -11,7 +11,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <section id="portfolio" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-black relative">
+    <section id="portfolio" className="py-20 sm:py-24 md:py-32 xl:py-40 bg-brand-black relative z-20">
       {/* Background glow & subtle texture */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-brand-gold/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen mix-blend-color-dodge"></div>
       <div className="absolute inset-0 bg-[#0a0a0a]/50 pointer-events-none"></div>
@@ -90,7 +90,7 @@ export default function Portfolio() {
               {/* Title Overlay */}
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 xl:p-12 translate-y-0 lg:translate-y-6 opacity-100 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-none z-20 flex flex-col items-center text-center">
                 <p className="text-brand-gold text-[9px] uppercase tracking-[0.4em] mb-4 font-medium relative top-0 lg:top-2 opacity-100 lg:opacity-0 lg:group-hover:top-0 lg:group-hover:opacity-100 transition-all duration-[1.5s] delay-100 ease-out drop-shadow-md">
-                  Performance
+                  Performance 
                 </p>
                 <h3 className="font-serif text-2xl xl:text-3xl text-white font-light drop-shadow-lg">{item.title}</h3>
               </div>

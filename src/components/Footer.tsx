@@ -5,7 +5,7 @@ import { cinematicEase } from "../lib/easings";
 export default function Footer() {
 
   return (
-    <footer className="bg-brand-black pt-24 sm:pt-32 pb-10 sm:pb-12 relative overflow-hidden">
+    <footer className="bg-brand-black pt-24 sm:pt-32 pb-10 sm:pb-12 relative z-20 overflow-hidden">
       {/* Cinematic ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] bg-brand-gold/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen -translate-y-1/2"></div>
       

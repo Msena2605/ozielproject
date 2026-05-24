@@ -155,11 +155,12 @@ Detalhes: ${formData.message || "Não informado"}`;
                 </div>
 
                 <div className="space-y-2 group relative flex flex-col justify-start">
-                  <label className="text-[9px] uppercase tracking-[0.4em] text-white/40 font-medium group-focus-within:text-brand-gold transition-colors duration-500">Data</label>
+                  <label id="date-label" className="text-[9px] uppercase tracking-[0.4em] text-white/40 font-medium group-focus-within:text-brand-gold transition-colors duration-500">Data</label>
                   <Popover.Root open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                     <Popover.Trigger asChild>
                       <button 
                         type="button" 
+                        aria-labelledby="date-label"
                         className={`w-full h-10 bg-transparent border-b text-left flex items-center justify-between transition-colors duration-500 font-light text-sm md:text-base outline-none relative group/btn ${isCalendarOpen ? 'border-brand-gold text-white' : 'border-brand-gray/50 text-white/50 hover:border-brand-gold/50'} ${date ? 'text-white' : ''}`}
                       >
                         {date ? format(date, "dd 'de' MMMM, yyyy", { locale: ptBR }) : "Selecione uma data"}

@@ -8,11 +8,17 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-end pb-28 md:pb-36 overflow-hidden bg-brand-black isolate">
+      {/* High-quality poster as background */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover object-cover bg-brand-black bg-[center_38%] md:bg-center transition-opacity duration-[1.5s] ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ backgroundImage: "url('/Oziel-Melo.png')", opacity: isVideoReady ? 0 : 1 }}
+      />
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isVideoReady ? 1 : 0 }}
         transition={{ duration: 0.7, ease: cinematicEase }}
-        className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
       >
         <video
           autoPlay
@@ -20,7 +26,6 @@ export default function Hero() {
           muted
           playsInline
           preload="metadata"
-          poster="/Oziel-Melo.png"
           onLoadedData={() => setIsVideoReady(true)}
           onCanPlay={() => setIsVideoReady(true)}
           aria-hidden="true"
@@ -31,10 +36,9 @@ export default function Hero() {
         </video>
       </motion.div>
 
-      <div className="fixed inset-0 z-[1] bg-black/12 pointer-events-none" />
-      <div className="fixed inset-x-0 top-0 h-32 z-[1] bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
-      <div className="fixed inset-x-0 bottom-0 h-[38vh] z-[1] bg-gradient-to-t from-brand-black/65 via-brand-black/20 to-transparent pointer-events-none" />
-      <div className="fixed inset-0 z-[1] shadow-[inset_0_0_90px_rgba(0,0,0,0.35)] pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-black/20 pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-32 z-[1] bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-[38vh] z-[1] bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center">
         <motion.p
